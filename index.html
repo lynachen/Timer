@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>Timer</title>
+	<link rel="stylesheet" href="https://lynachen.github.io/plug-ins/common.css" />
+	<script src="https://lynachen.github.io/plug-ins/jquery-1.12.4/jquery.min.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="timer" id="timer"></div>
+	</div>
+	
+	<style>
+		.wrapper {
+			width: 1200px;
+			margin:0 auto;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		var HH = 0;//时
+		var mm = 0;//分
+		var ss = 0;//秒
+		var timeState = true;//时间状态 默认为true 开启时间
+		
+		/*实现计时器*/
+		var timer = setInterval(function () {
+		    if (timeState) {
+		        if (HH == 24) HH = 0;
+		        str = "";
+		        if (++ss == 60) {
+		            if (++mm == 60) { HH++; mm = 0; }
+		            ss = 0;
+		        }
+		        str += HH < 10 ? "0" + HH : HH;
+		        str += ":";
+		        str += mm < 10 ? "0" + mm : mm;
+		        str += ":";
+		        str += ss < 10 ? "0" + ss : ss;
+		        $(".timer").text(str);
+		    } else {
+		        $(".timer").text(str);
+		    }
+		}, 1000);
+	</script>
+</body>
+</html>
